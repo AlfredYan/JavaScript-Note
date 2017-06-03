@@ -140,7 +140,7 @@ var studentOne = obj; // 将obj返回给studentOne
 
 ## 关系图
 
-![JavaScript原型关系图 ](https://raw.githubusercontent.com/AlfredYan/JavaScript-Note/master/images/JavaScript%E5%8E%9F%E5%9E%8B%E5%85%B3%E7%B3%BB%E5%9B%BE%20.png)
+![JavaScript原型关系图 ](https://raw.githubusercontent.com/AlfredYan/JavaScript-Note/master/images/JavaScript%E5%8E%9F%E5%9E%8B%E5%85%B3%E7%B3%BB%E5%9B%BE.png)
 
 图中蓝色所组成的链状结构即为**原型链** 。
 
