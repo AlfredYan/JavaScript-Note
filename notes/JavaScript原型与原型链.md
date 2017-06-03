@@ -99,7 +99,7 @@ console.log(Function.__proto__ === Function.prototype); // true
 
 ## 关系图
 
-![JavaScript原型关系图 ](C:\Users\Leo\Desktop\JavaScript原型关系图 .png)
+![JavaScript原型关系图 ](https://raw.githubusercontent.com/AlfredYan/JavaScript-Note/master/images/JavaScript%E5%8E%9F%E5%9E%8B%E5%85%B3%E7%B3%BB%E5%9B%BE%20.png)
 
 图中蓝色所组成的链状结构即为**原型链** 。
 
