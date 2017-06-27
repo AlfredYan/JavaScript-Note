@@ -116,6 +116,20 @@ setTimeout( function() {
 5. 函数声明会首先被提升，然后才是变量，重复的var声明会被忽略，但出现在后面的同名函数声明还是可以覆盖前面的。
 
    ```javascript
+   //例子1
+   alert(x); // function x(){}
+
+   var x = 10;
+   alert(x); // 10
+
+   x = 20
+   function x(){};
+
+   alert(x); // 20
+   ```
+
+   ```javascript
+   //例子2
    foo(); // 3
    var foo;
 
@@ -131,8 +145,6 @@ setTimeout( function() {
      console.log(3);
    }
    ```
-
-   ​
 
 6. 变量只能通过var关键字声明。
 
@@ -282,6 +294,35 @@ AO = {
 1. 进入执行上下文
 
    在进入执行上下文前，VO中已包含：函数的所有形参(如果在函数的执行上下文中)，函数声明以及变量声明。
+
+   ```javascript
+   function test(a, b){
+     var c = 10;
+     function d(){};
+     var e = function _e(){};
+     (function x(){}); //函数表达式不会影响VO
+   }
+
+   test(10);
+
+   //进入带有参数10的test函数上下文时，AO：
+   AO(test) = {
+     a: 10,
+     b: undefined,
+     c: undefined,
+     d: <reference to FunctionDeclaration "d" >,
+     e: undefined
+   }
+   ```
+
+2. 代码执行
+
+   前面那个例子在代码执行阶段，AO/VO会被修改为如下：
+
+   ```javascript
+   AO['c'] = 10;
+   AO['e'] = <reference to FunctionExpression "_e">;
+   ```
 
 
 
