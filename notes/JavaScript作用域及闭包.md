@@ -160,6 +160,12 @@ setTimeout( function() {
 
 每当执行一段可执行代码时，即会进入一个执行上下文（EC）。执行上下文是一个抽象概念，用于与可执行代码概念进行区分。
 
+每个执行上下文，都有三个重要属性：
+
+- 变量对象（Variable object，VO）
+- 作用域链（Scope chain）
+- this
+
 定义执行上下文栈是一个数组
 
 ```javascript
@@ -273,7 +279,7 @@ alert(a) // 直接访问，在VO(globalContext)中找到"test"
 alert(window.a) // 间接通过global访问
 ```
 
-**函数上下文中的变量对象：** 在函数执行上下文中，VO是不能直接访问的，此时由活动对象（AO）扮演VO角色。活动对象在进入函数上下文时被创建的，通过函数的arguments属性初始化。arguments属性的值是Arguments对象。
+**函数上下文中的变量对象：** 在函数执行上下文中，VO是不能直接访问的，此时由活动对象（AO）扮演VO角色。**活动对象在进入函数上下文时被创建的** ，通过函数的arguments属性初始化。arguments属性的值是Arguments对象。
 
 ```javascript
 VO(functionContext) === AO;
@@ -325,4 +331,394 @@ AO = {
    ```
 
 
+## 7.作用域链
 
+每个上下文拥有自己的变量对象：对于全局上下文，它是全局对象自身；对于函数，则是活动对象。作用域链是内部上下文所有变量对象的列表。作用域链用来变量查询。
+
+作用域链与一个执行上下文相关，变量对象的链用于在标识符解析中变量查找。
+
+函数上下文的**作用域链在函数调用时创建** ，包含活动对象和这个函数内部的[[scope]]属性。
+
+**Scope = AO|VO + [[scope]]** 
+
+```javascript
+activeExecutionContext = {
+  VO: {...}, // or AO
+  this: thisValue,
+  Scope: [
+    // Scope chain
+    // 所有变量对象的列表
+  ]     
+};
+  
+Scope = [AO].concat([[scope]]);  
+```
+
+[[scope]]是所有父变量对象的层级链，处于当前函数上下文之上，**[[scope]]在函数被创建时被存储** ，是静态的，直到函数销毁。
+
+**函数的生命周期：** 
+
+1. **函数创建：** 
+
+   ```javascript
+   var x = 10;
+
+   function foo() {
+     var y = 20;
+     console.log(x + y);
+   }
+
+   fooContext.AO = {
+     y: undefined // undefined （在进入上下文时是20）
+   }
+   ```
+
+2. **函数激活：** 
+
+   标识符解析是一个处理过程，用来确定一个变量（或函数声明）属于哪个变量对象。
+
+   标识符解析过程包含与变量名对应名对应属性的查找，即作用域中变量对象的连续查找，从最深的上下文开始，直到作用域链的最上层。
+
+   ```javascript
+   var x = 10;
+
+   function foo() {
+     var y = 20;
+     
+     function bar(){
+       var z = 30;
+       console.log(x + y + z);
+     }
+     
+     bar();
+   }
+
+   foo(); // 60
+   ```
+
+   我们有如下的变量/活动对象，函数的[[scope]]属性即上下文的作用域链：
+
+   全局上下文变量对象：
+
+   ```javascript
+   globalContext.VO === Global = {
+     x: 10,
+     foo: <reference to function>
+   };
+   ```
+
+   在foo创建时，foo的[[scope]]属性：
+
+   ```javascript
+   foo.[[Scope]] = [
+     globalContext.VO
+   ];
+   ```
+
+   在foo被调用（进入上下文），foo上下文的活动对象是：
+
+   ```javascript
+   fooContext.AO = {
+     y: 20,
+     bar: <reference to function>
+   };
+   ```
+
+   foo上下文的作用域链为：
+
+   ```javascript
+   // fooContext.Scope = fooContext.AO + foo.[[Scope]]
+
+   fooContext.Scope = [
+     fooContext.AO,
+     globalContext.VO
+   ];
+   ```
+
+   内部函数bar创建时，其[[Scope]]为：
+
+   ```javascript
+   bar.[[Scope]] = [
+     fooContext.AO,
+     globalContext.VO
+   ];
+   ```
+
+   bar被调用时，bar上下文的活动对象为：
+
+   ```javascript
+   barContext.AO = {
+     z: 30
+   };
+   ```
+
+   bar上下文作用域链为：
+
+   ```javascript
+   // barContext.Scope = barContext.AO + bar.[[Scope]]
+
+   barContext.Scope = [
+     barContext.AO,
+     fooContext.AO,
+     globalContext.VO
+   ];
+   ```
+
+   对x、y、z的标识符解析为：
+
+   ```javascript
+   // x
+   barContext.AO // not found
+   fooContext.AO // not found
+   golbalContext.VO // found, 10
+
+   // y
+   barContext.AO // not found
+   fooContext.AO // found, 20
+
+   // z
+   barContext.AO // found, 30
+   ```
+
+**通过函数构造函数创建的函数的[[Scope]]：** 通过函数构造创建的函数的[[scope]]属性总是唯一的全局对象。
+
+```javascript
+var a = 10;
+
+function foo() {
+  var y = 20;
+  
+  // 函数声明
+  function barFD() {
+    console.log(x);
+    console.log(y);
+  }
+  
+  // 函数表达式
+  var barFE = function() {
+    console.log(x);
+    console.log(y);
+  };
+  
+  // 使用函数构造函数创建函数
+  var barFn = Function('console.log(x); console.log(y);');
+
+  barFD(); // 10, 20
+  barFE(); // 10, 20
+  barFn(); // 10, y is not defined
+  
+}
+
+foo();
+```
+
+**二维作用域链查找：** 当代码需要查找一个属性或者标识符时，首先会通过作用域链来查找相关的对象；如果对象未被找到，扣回根据对象的原型链来查找属性。（活动对象没有原型）
+
+```javascript
+// 例子1
+function foo() {
+  console.log(x);
+}
+
+Object.prototype.x = 10;
+
+foo(); // 10
+```
+
+```javascript
+// 例子2
+// 活动对象没有原型
+// 只有到达全局对象，它从Object.prototype继承而来
+function foo() [
+  var x = 20;
+  
+  function bar() {
+    console.log(x);
+  }
+  
+  bar();
+]
+
+Object.prototype.x = 10;
+
+foo(); // 20
+```
+
+## 8.闭包
+
+**自由变量：** 在函数中使用，但既不是函数参数也不是函数的局部变量的变量。
+
+```javascript
+function testFn() {
+  var localVar = 10;
+  
+  function innerFn(innerParam){
+    console.log(innerParam + lovalVar); // localVar为自由变量
+  }
+
+  return innerFn;
+}
+
+var someFn = testFn();
+someFn(20); // 30 
+```
+
+在面向堆栈的编程语言中，函数的局部变量都是保存在栈上的，每当函数被调用时，这些变量和函数参数都会压入到栈上。当函数返回时，这些参数会从栈中移出。
+
+对于采用面向栈模型来存储局部变量的系统而言，上面的那个例子中，当在外部对innerFn进行函数调用时，会发生错误，因为localVar已经不存在了。
+
+上述问题取决于是否将函数以返回值返回，以及是或否将函数当函数参数使用。为了解决上述问题，就需要引入闭包。
+
+**闭包：** 闭包是代码块和创建该代码块的上下文中数据的结合。
+
+创建该函数的父级上下文的数据是保存在函数的内部属性[[scope]]中的。所有函数都是闭包，因为它们都是在创建的时候就保存了上次上下文的作用域链。不管函数后续是否被调用，[[scope]]在函数创建时就有了。
+
+```javascript
+// 例子1
+var x = 10;
+
+function foo() {
+  console.log(x);
+}
+
+(function (funArg) {
+  var x = 20;
+  
+  // 变量x在上下文中静态保存，在该函数创建时就保存了
+  funArg(); // 10
+})(foo);
+```
+
+```javascript
+// 例子2
+var x = 10;
+
+function foo() {
+  console.log(x);
+}
+
+// foo是闭包
+foo: <FunctionObject> = {
+  [[Call]]: <code block of foo>,
+  [[Scope]]: [
+    global: {
+      x: 10
+    }
+  ],
+  ... // 其他属性
+};
+```
+
+**所有对象都引用一个[[Scope]]：** 同一个父上下文中创建的闭包是共有一个[[Scope]]属性的。当某个闭包对其中[[Scope]]的变量修改会影响到其他闭包对其变量的读取。
+
+```javascript
+// 例子1
+var firstClosure;
+var secondClosure;
+
+function foo() {
+  var x = 1;
+  
+  firstClosure = function() { return ++x };
+  secondClosure = function() { return --x };
+  
+  x = 2 // 影响AO['x']，在2个闭包共有[[Scope]]中
+  
+  console.log(firstClosure()); // 3，通过第一个闭包的[[Scope]]
+}
+
+foo();
+
+console.log(firstClosure()); // 4，通过第一个闭包的[[Scope]]
+console.log(secondClosure()); // 3，通过第二个闭包的[[Scope]]
+```
+
+```javascript
+// 例子2
+var data = [];
+
+for(var i = 0; i < 3; i++) {
+  data[i] = function() {
+    console.log(i);
+  };
+}
+
+data[0](); // 3
+data[1](); // 3
+data[2](); // 3
+
+activeContext.Scope = {
+  ... // 其他变量对象
+  {data: [...], i: 3} //活动对象
+};
+          
+// 使用闭包修改循环，使其输出0、1、2
+for(var i = 0; i < 3; i++) {
+  data[i] = (function(x) {
+    return function() {
+      console.log(x);
+    };
+  })(i);
+}
+
+data[0](); // 0
+data[1](); // 1
+data[2](); // 2
+```
+
+**理论版本：** 
+
+ECMAScript中，闭包指的是：
+
+1. 从理论角度：所有函数都是闭包，因为它们都在创建的时候将上层上下文的数据保存起来了。
+2. 从实践角度：
+   - 即使创建它的上下文已经销毁，它仍然存在（比如，内部函数从父函数中返回）
+   - 在代码中引用了自由变量
+
+**闭包实例：** 
+
+1. 数组排序，接受一个排序条件函数作为参数：
+
+   ```javascript
+   [1, 2, 3].sort(function(a, b) {
+     ... // 排序条件
+   });
+   ```
+
+2. 延迟调用：
+
+   ```
+   var a = 10;
+   setTimeOut(function() {
+     console.log(a);
+   }, 1000);
+   ```
+
+3. 所有回调函数
+
+4. 模块：必须有外部的封闭函数，该函数必须至少被调用一次。封闭函数必须返回至少一个内部函数。
+
+   ```javascript
+   var foo = (function myModule() {
+     var something = "cool";
+     var another = [1, 2, 3];
+     
+     function doSomething() {
+       console.log(something);
+     }
+     
+     function doAnother() {
+       console.log(another.join(","));
+     }
+     
+     return {
+       doSomething: doSomething,
+       doAnother: doAnother
+     };
+   })();
+
+   foo.doSomething() // cool
+   foo.doAnother() // 1,2,3
+   ```
+
+   ​
