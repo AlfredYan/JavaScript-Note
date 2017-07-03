@@ -91,6 +91,20 @@
 
    bar(3); // 2 3
    ```
+   第三方库的许多函数，以及JavaScript和宿主对象环境中的许多内置函数，都提供了一个可选参数，被称为“上下文”（context），其作用和bind(...)一样，确保回调函数使用你指定的this。
+
+   ```javascript
+   function foo(el) {
+     console.log(el, this.id);
+   }
+
+   var context = {
+     id: "awesome"
+   };
+
+   // 调用foo(..)时，把this绑定到context
+   [1, 2, 3].forEach(foo, context); // 1 awesome 2 awesome 3 awesome
+   ```
 
 4. **new绑定：** 使用[new操作符](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#new的具体操作)调用函数，也可称为对函数的“构造调用”。使用new来调用函数时，会构造一个新的对象，并把这个新对象绑定到韩式调用的this。
 
@@ -105,7 +119,7 @@
 
 **绑定方式优先级：** new绑定 > 显示绑定 > 隐式绑定 > 默认绑定
 
-在使用apply()来展开一个数组或者使用bind对参数进行柯里化（预先设置一些参数）时，会将null或者undefined作为this的绑定对象传入call、apply或bind时，这些值在调用时会被忽略，实际应用的是默认绑定。在这类情况下使用Object.create(null)能创建一个完全的空对象，比null或undefined更合适
+**被忽略的this:** 在使用apply()来展开一个数组或者使用bind对参数进行柯里化（预先设置一些参数）时，会将null或者undefined作为this的绑定对象传入call、apply或bind时，这些值在调用时会被忽略，实际应用的是默认绑定。在这类情况下使用**Object.create(null)能创建一个完全的空对象** ，比null或undefined更合适
 
 ```javascript
 function foo(a, b) {
@@ -122,4 +136,30 @@ foo.apply(∅, [2.3]); // a:2, b:3
 var bar = foo.bind(∅, 2);
 bar(3); // a:2, b:3
 ```
+
+## this词法（箭头函数）
+
+ES6中有一种无法使用this绑定规则的特殊函数类型：箭头函数。箭头函数不使用"function"关键字定义，而是使用**“=>”** 定义的。箭头函数根据外层（函数或全局）作用域来决定this。
+
+```javascript
+function foo() {
+  return (a) => {
+    // this继承自foo()
+    console.log(this.a)
+  }
+}
+
+var obj1 = {
+  a: 1
+};
+
+var obj2 = {
+  a: 2
+};
+
+var bar = foo.call(obj1);
+bar.call(obj2); // 1
+```
+
+foo内部创建的箭头函数会捕获调用时foo()的this。上例中，由于foo()的this被绑定到obj1，bar的this也被绑定到了obj1，**箭头函数的绑定无法修改** 。
 
