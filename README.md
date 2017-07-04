@@ -14,3 +14,10 @@
 - [总结](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E9%97%AD%E5%8C%85.md#总结) 
 
 
+## [this深入理解](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3.md) 
+
+- [this基本概念](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3.md#1this基本概念) 
+- [this绑定规则](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3.md#2this绑定规则) 
+- [this词法（箭头函数）](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3.md#3this词法箭头函数) 
+- [从ECMAScript规范了解this](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3.md#4从ecmascript规范了解this) 
+- [总结](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3.md#5总结) 

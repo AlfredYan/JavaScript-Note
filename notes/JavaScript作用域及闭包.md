@@ -164,7 +164,7 @@ setTimeout( function() {
 
 - [变量对象（Variable object，VO）](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E9%97%AD%E5%8C%85.md#6变量对象) 
 - [作用域链（Scope chain）](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E9%97%AD%E5%8C%85.md#7作用域链) 
-- this
+- [this](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3.md) 
 
 定义执行上下文栈是一个数组
 
