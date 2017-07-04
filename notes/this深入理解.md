@@ -137,7 +137,7 @@ var bar = foo.bind(∅, 2);
 bar(3); // a:2, b:3
 ```
 
-## this词法（箭头函数）
+## 3.this词法（箭头函数）
 
 ES6中有一种无法使用this绑定规则的特殊函数类型：箭头函数。箭头函数不使用"function"关键字定义，而是使用**“=>”** 定义的。箭头函数根据外层（函数或全局）作用域来决定this。
 
@@ -162,4 +162,192 @@ bar.call(obj2); // 1
 ```
 
 foo内部创建的箭头函数会捕获调用时foo()的this。上例中，由于foo()的this被绑定到obj1，bar的this也被绑定到了obj1，**箭头函数的绑定无法修改** 。
+
+## 4.从ECMAScript规范了解this
+
+1. **引用类型（Reference）：** 
+
+   Reference类型是用来解释delete、typeof及赋值的那个操作行为的。是“只存在于规范里的抽象类型”，为了更好的描述语言底层的行为逻辑而存在的。
+
+   引用类型的值只有两种情况：
+
+   1. 当处理一个标示符（变量名，函数名，函数参数名和全局对象中未识别的属性名）时
+   2. 一个属性访问器（（.）语法或（[]）语法）
+
+   ```javascript
+   // 标示符
+   var a = 10;
+   function b() {}
+
+   // 属性访问器
+   foo.bar();
+   foo['bar']();
+   ```
+
+   Reference由3个部分组成：
+
+   - base value：属性所在对象或者就是EnvironmentRecord，它的值可能是undefined、Object、Boolean、String、Number 或者Environment Record中的一种。
+
+   - referenced name：属性的名称。
+
+   - strict reference：标志符，Boolean型。
+
+     ```javascript
+     var foo = 1;
+
+     // foo的Reference：
+     var fooReference = {
+       base: EnvironmentRecord,
+       name: 'foo',
+       strict: false
+     };
+
+     var bar = {
+       baz: function() {
+         return this;
+       }
+     };
+
+     bar.baz(); // bar
+
+     // bza的Reference：
+     var BazReference = {
+       base: bar,
+       name: baz,
+       strict: false
+     }
+     ```
+
+2. **获取Reference组成部分的方法：** 
+
+   - GetBase：返回Reference的base value
+
+   - IsPropertyReference：当base value是一个对象时，返回true；否则返回false。
+
+   - GetValue：返回对象属性真正（具体）的值，**而不再是一个Reference** 。
+
+     ```javascript
+     // GetValue方法伪代码
+     function GetValue(value) {
+       
+       if (Type(value) != Reference) {
+         return value;
+       }
+       
+       var base = GetBase(value);
+       
+       if (base === null) {
+         throw new ReferenceError;
+       }
+       
+       return base.[[Get]](GetPropertyName(Value));
+     }
+     ```
+
+3. **确定this的值：** 
+
+   在一个函数上下文中，this由调用者提供，由调用函数的方式来决定。如果**调用括号()的左边** 是引用类型的值，**this将设为引用类型值的base对象（base object）** ，在其他情况下，这个值为null，其值会被隐式转换为全局对象。
+
+   **调用货号左边为引用类型：** 
+
+   ```javascript
+   // 标示符例子
+   function foo() {
+     return this;
+   }
+
+   foo(); // global
+
+   // 调用括号左边为一个引用类型值，foo是一个标示符
+   // 所以this设置为引用类型的base对象，即全局对象
+   var fooReference = {
+     base: global,
+     name: 'foo'
+   };
+   ```
+
+   ```javascript
+   // 属性访问器例子
+   var foo = {
+     bar: funtion() {
+       return this;
+     }
+   };
+
+   foo.bar(); // foo
+
+   var fooReference = {
+     base: foo,
+     name: 'bar'
+   };
+   ```
+
+   由于应用类型不同的中间值，用表达式的不同形式激活同一个函数会有不同的this值。
+
+   ```javascript
+   // 在上面那个例子中，使用另一种表达式激活函数
+   var baz = foo.bar;
+   baz(); // global
+
+   var bazReference = {
+     base: global,
+     name: 'baz'
+   }
+   ```
+
+   **调用括号左边为非引用类型：**
+
+   ```javascript
+   // 例子中的函数对象不是引用类型对象（既不是标示符也不是属性访问器）
+   // this值最终设为全局对象
+   (function() {
+     cosnole.log(this); // null => global
+   })();
+   ```
+
+   ```javascript
+   var foo = {
+     bar: function() {
+       console.log(this);
+     }
+   };
+
+   // 在"()"运算符的返回中，未使用GetValue方法，所以返回的仍是引用类型
+   // 所以this设为base对象，即foo
+   (foo.bar) (); // foo
+
+   // 赋值运算符（=）调用了GetValue方法，返回的函数对象
+   // 所以this设为null， 隐式转换为global
+   (foo.bar = foo.bar) ();// nul l => global
+
+   // “||”运算符调用了GetValue方法，返回的值不再是引用类型
+   // 所以this设为null， 隐式转换为global
+   (false || foo.bar) (); // null => global
+
+   // “,”运算符调用了GetValue方法，返回的值不再是引用类型
+   // 所以this设为null， 隐式转换为global
+   (foo.bar, foo.bar) (); // null => global
+   ```
+
+   **引用类型和this为null：** 
+
+   当引用类型值的base对象是[活动对象](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%8A%E9%97%AD%E5%8C%85.md#6变量对象) 时，this会被设为null，但最终结果会隐式转换为global。比如，内部函数在父函数中被调用。
+
+   ```javascript
+   function foo() {
+     function bar() {
+       cosnole.log(this);
+     }
+     
+     // 活动对象总是作为this返回，值为null，即AO.bar()相当于null.bar()
+     bar(); // null => global (相当于AO.bar())
+   }
+   ```
+
+## 5.总结
+
+1. this是由激活上下文代码的调用者来提供，即调用函数的父上下文。this取决于调用函数的方式。
+2. this绑定的方式有：默认绑定、隐式绑定、显示绑定、new绑定；优先级以此升高。
+3. ES6中，箭头函数根据外层（函数或全局）作用域来决定this。
+4. 如果调用“()”左边是引用类型，this设为引用类型值的base对象；如果不是引用类型，this设为null，这种情况下null会隐式转换成全局对象。
 
