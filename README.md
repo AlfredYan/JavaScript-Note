@@ -21,3 +21,17 @@
 - [this词法（箭头函数）](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3.md#3this词法箭头函数) 
 - [从ECMAScript规范了解this](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3.md#4从ecmascript规范了解this) 
 - [总结](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3.md#5总结) 
+
+## [对象](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md) 
+
+- [数据类型](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md#1数据类型) 
+- [创建对象的方法](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md#2创建对象的方法) 
+- [对象的属性](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md#3对象的属性) 
+- [属性（数据）描述符](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md#4属性数据描述符) 
+- [访问描述符（getter & setter）](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md#5访问描述符getter--setter) 
+- [对象/属性不变性](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md#6对象属性不变性) 
+- [属性存在性](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md#7属性存在性) 
+- [对象遍历](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md#8对象遍历) 
+- [对象复制](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md#9对象复制) 
+- [总结](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md#10总结) 
+
