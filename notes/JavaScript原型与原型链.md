@@ -55,9 +55,8 @@ console.log(studentOne.constructor === Student); // true
 Object.prototype的原型为null。
 
 ```javascript
-function Student(){
-  
-}
+function Student(){ }
+
 Student.prototype.name = "No Name";
 
 var studentOne = new Student();

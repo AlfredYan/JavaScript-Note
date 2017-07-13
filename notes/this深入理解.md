@@ -106,7 +106,7 @@
    [1, 2, 3].forEach(foo, context); // 1 awesome 2 awesome 3 awesome
    ```
 
-4. **new绑定：** 使用[new操作符](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#new的具体操作)调用函数，也可称为对函数的“构造调用”。使用new来调用函数时，会构造一个新的对象，并把这个新对象绑定到韩式调用的this。
+4. **new绑定：** 使用[new操作符](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#6new操作符构造调用的具体操作)调用函数，也可称为对函数的“构造调用”。使用new来调用函数时，会构造一个新的对象，并把这个新对象绑定到韩式调用的this。
 
    ```javascript
    function foo(a) {
