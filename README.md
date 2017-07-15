@@ -48,3 +48,25 @@
 - [JavaScript的面向对象编程](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#8javascript的面向对象编程) 
 - [行为委托](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#9行为委托) 
 - [总结](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#10总结) 
+
+## [内置对象学习](https://github.com/AlfredYan/JavaScript-Note/tree/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1) 
+
+### [Object](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Object.md) 
+
+- [new Object()](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Object.md#1new-object) 
+- [Object()](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Object.md#2object) 
+- [Object.defineProperty() && Object.defineProperties()](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Object.md#3objectdefineproperty--objectdefineproperties) 
+- [Object.getOwnPropertyDescriptor()](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Object.md#4objectgetownpropertydescriptor) 
+- [控制对象状态的方法：extension、seal、freeze](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Object.md#5控制对象状态的方法extensionsealfreeze) 
+- [Object.getOwnPropertyNames() & Object.keys()](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Object.md#6objectgetownpropertynames--objectkeys) 
+- [Object.getOwnPropertySymbols()](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Object.md#7objectgetownpropertysymbols) 
+- [Object.entries() & Object.values()](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Object.md#8objectentries--objectvalues) 
+- [Object.is()](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Object.md#9objectis) 
+- [Obejct.assign()](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Object.md#10obejctassign) 
+- [Object.create()](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Object.md#11objectcreate) 
+- [Object.getPrototypeOf() & Object.setPrototypeOf()](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Object.md#12objectgetprototypeof--objectsetprototypeof) 
+- [Object.prototype对象](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Object.md#13objectprototype对象) 
+
+
+
+ 
