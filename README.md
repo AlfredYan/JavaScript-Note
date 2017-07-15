@@ -24,7 +24,7 @@
 
 ## [对象](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md) 
 
-- [数据类型](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md#1数据类型) 
+- [对象概述](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md#1对象概述) 
 - [创建对象的方法](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md#2创建对象的方法) 
 - [对象的属性](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md#3对象的属性) 
 - [属性（数据）描述符](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md#4属性数据描述符) 
@@ -69,4 +69,3 @@
 
 
 
- 
