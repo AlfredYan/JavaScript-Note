@@ -8,9 +8,9 @@
 Object.getOwnPropertyNames(Object).sort().forEach(function(val) { console.log(val); });
 
 "arguments" ×
-"assign"
+"assign" √
 "caller" ×
-"create"
+"create" √
 "defineProperties" √
 "defineProperty" √
 "entries" √
@@ -19,7 +19,7 @@ Object.getOwnPropertyNames(Object).sort().forEach(function(val) { console.log(va
 "getOwnPropertyDescriptors" √
 "getOwnPropertyNames" √
 "getOwnPropertySymbols" √
-"getPrototypeOf"
+"getPrototypeOf" √
 "is" √
 "isExtensible" √
 "isFrozen" √
@@ -28,9 +28,9 @@ Object.getOwnPropertyNames(Object).sort().forEach(function(val) { console.log(va
 "length" ×
 "name" ×
 "preventExtensions" √
-"prototype"
+"prototype" √
 "seal" √
-"setPrototypeOf"
+"setPrototypeOf" √
 "values" √
 ```
 
@@ -341,10 +341,10 @@ o = Object.create(Object.prototype, {
 
 - obj：指定对象
 
-**Object.setPrototypeOf(obj, prototype)：** 设置一个对象的原型（即[[prototype]]属性）到另一个对象或null。
+**Object.setPrototypeOf(obj, prototype)：** 设置指定对象的原型（即[[prototype]]属性）到另一个对象或null。
 
-- obj：要设置原型的对象
-- prototype：该对象的新原型，如果不是对象或null，则什么都不做。
+- obj：指定对象
+- prototype：指定对象的新原型，如果不是对象或null，则什么都不做。
 
 ```javascript
 var o;
@@ -359,4 +359,106 @@ Object.getPrototypeOf(o);// test {...}
 ```
 
 ## 13.Object.prototype对象
+
+Object.prototype对象中主要包含以下方法（所有Object的实例对象都继承了这些方法）：
+
+1. **obj.valueOf()：** 返回指定对象的原始值。如果该对象没有原始值，则返回对象自身。每个内置对象都会覆盖这个方法，来返回一个合适的值，当然也可以为自定义对象一个创建valueOf()来覆盖它。**在JS自动类型转换时会默认调用这个方法** 。
+
+   ```javascript
+   var o;
+
+   // 对象有原始值时，返回原始值
+   o = new Number(1);
+   o.valueOf() // 1
+
+   // 对象无原始值时，返回对象本身
+   o = new Object();
+   o.valueOf() === o // true
+
+   // 自动类型转换时的默认调用
+   console.log(10 - o); // NaN
+
+   // 自定义valueOf()覆盖后，自动类型转换时的默认调用
+   o.valueOf = function() { return 1}
+   console.log(10 - o); // 9
+   ```
+
+2. **obj.toString()：** 返回一个表示该对象的字符串。该字符串说明对象的类型。**在JS自动类型转换时会默认调用这个方法** 。
+
+   ```javascript
+   var o;
+
+   o = new Object();
+   o.toString(); // "[object Object]"
+
+   o.toString = function() { return "Hello"; }
+   console.log(o + " World"); // Hello World
+   ```
+
+   使用toString()判断数据类型：因为实例对象可能会自定义toString()方法来覆盖Object.prototype.toString()，所以使用Object.prototype.toString.call(obj)。（[参考](http://javascript.ruanyifeng.com/stdlib/object.html#toc5)） 
+
+   ```javascript
+   var toString = Object.prototype.toString;
+
+   toString.call(1); // "[object Number]"
+   toString.call("a"); // "[object String]"
+   toString.call(true); // "[object Boolean]"
+   toString.call(undefined); // "[object Undefined]"
+   toString.call(null); // "[object Null]"
+   toString.call([]); // "[object Array]"
+   toString.call(function() {}); // "[object Function]"
+   toString.call(new Error()); // "[object Error]"
+   toString.call(new Date()); // "[object Date]"
+   toString.call(/a/); // "[object RegExp]"
+   toString.call({ }); // "[object Obejct]"
+
+   function testType() {
+     return toString.call(arguments);
+   }
+   testType() // "[object Arguments]"
+   ```
+
+3. **obj.hasOwnProperty(prop)：** 判断某对象是否具有指定属性作为自身属性，返回一个布尔值。
+
+   - prop：将被判断的属性（指定属性）
+
+   ```javascript
+   var o;
+   o = new Object();
+   o.prop = "exists";
+   o.deleteProp = function() {
+     delete o.prop;
+   }
+
+   o.hasOwnProperty("prop"); // true
+   o.deleteProp();
+   o.hasOwnProperty("prop"); // false
+   ```
+
+4. **prototypeObj.isPrototypeOf(obj)：** 判断一个对象(prototypeObj)是否存在于另一个对象(obj)的原型链上，返回一个布尔值。
+
+   - obj：在该对象原型上寻找
+
+   ```javascript
+   var o;
+   o = new Object();
+   Object.prototype.isPrototypeOf(o); // true
+
+   function test() {}
+   Object.setPrototypeOf(o, test.prototype)
+   test.prototype.isPrototypeOf(o); // true
+   Object.prototype.isPrototypeOf(test); // true
+   ```
+
+5. **obj.prototypeIsEnumerable(prop)：** 判断某属性是否为当前对象的可枚举自身属性，返回一个布尔值。
+
+   - prop：将被判断的属性名
+
+   ```javascript
+   var o;
+   o = ["is enumerable"];
+
+   o.propertyIsEnumerable(0); // true
+   o.propertyIsEnumerable("length"); // false
+   ```
 

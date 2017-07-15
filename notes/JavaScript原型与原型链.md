@@ -23,7 +23,7 @@ console.log(studentTwo.name); // Alfred
 
 每一个JavaScript对象(null除外)都有一个属性，叫\_\_proto\_\_ ，这个属性用于指向该对象的原型，即该对象的原型链。
 
-\_\_proto\_\_ 是内部[[Prototype]]的getter和setter方法，建议使用**Object.getPrototypeOf(obj)** 获取。
+\_\_proto\_\_ 是内部[[Prototype]]的getter和setter方法，建议使用**[Object.getPrototypeOf(obj)](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Object.md#12objectgetprototypeof--objectsetprototypeof) ** 获取。
 
 ```javascript
 function Student(){
