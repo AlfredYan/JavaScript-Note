@@ -22,6 +22,26 @@
 - [从ECMAScript规范了解this](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3.md#4从ecmascript规范了解this) 
 - [总结](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3.md#5总结) 
 
+## [JavaScript原型与原型链](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md)
+
+- [prototype属性](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#1prototype属性) 
+- [原型链](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#2对象的prototype属性)
+- [constructor属性](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#3constructor属性) 
+- [获取实例属性过程](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#4获取实例属性过程) 
+- [instanceof运算符](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#5instanceof运算符) 
+- [new操作符构造调用的具体操作](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#6new操作符构造调用的具体操作) 
+- [对象原型链关系图](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#7对象原型链关系图) 
+- [JavaScript的面向对象编程](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#8javascript的面向对象编程) 
+- [行为委托](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#9行为委托) 
+- [总结](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#10总结) 
+
+## [数据类型](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md)
+
+- [数据类型概述](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#1数据类型概述) 
+- [数据类型的判断](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#2数据类型的判断) 
+- [null与undefined](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#3null与undefined) 
+- [boolean](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#4boolean) 
+
 ## [对象](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md) 
 
 - [对象概述](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md#1对象概述) 
@@ -36,25 +56,13 @@
 - [总结](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%AF%B9%E8%B1%A1.md#10总结) 
 
 
-## [JavaScript原型与原型链](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md)
+## [数值](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E5%80%BC.md#数值) 
 
-- [prototype属性](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#1prototype属性) 
-- [原型链](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#2对象的prototype属性)
-- [constructor属性](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#3constructor属性) 
-- [获取实例属性过程](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#4获取实例属性过程) 
-- [instanceof运算符](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#5instanceof运算符) 
-- [new操作符构造调用的具体操作](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#6new操作符构造调用的具体操作) 
-- [对象原型链关系图](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#7对象原型链关系图) 
-- [JavaScript的面向对象编程](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#8javascript的面向对象编程) 
-- [行为委托](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#9行为委托) 
-- [总结](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#10总结) 
-
-## [数据类型](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md) 
-
-- [数据类型概述](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#1数据类型概述) 
-- [数据类型的判断](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#2数据类型的判断) 
-- [null与undefined](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#3null与undefined) 
-- [boolean](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#4boolean) 
+- [数值类型概述](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E5%80%BC.md#1数值类型概述) 
+- [数值的表示](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E5%80%BC.md#2数值的表示) 
+- [数值的精度与范围](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E5%80%BC.md#3数值的精度与范围)
+- [特殊的数值](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E5%80%BC.md#4特殊的数值) 
+- [总结](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E5%80%BC.md#5总结) 
 
 ## [内置对象学习](https://github.com/AlfredYan/JavaScript-Note/tree/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1) 
 
@@ -75,4 +83,11 @@
 - [Object.prototype对象](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Object.md#13objectprototype对象) 
 
 
+### [Number](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Number.md) 
 
+- [简介](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Number.md#1简介) 
+- [Number对象的属性](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Number.md#2number对象的属性) 
+- [Number.isInteger() & Number.isSafeInteger()](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Number.md#3numberisinteger--numberissafeinteger) 
+- [Number.isFinite() & Number.isNaN()](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Number.md#4numberisfinite--numberisnan) 
+- [Number.parseInt() & Number.parseFloat()](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Number.md#5numberparseint--numberparsefloat) 
+- [Number.prototype对象](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Number.md#6numberprototype对象) 

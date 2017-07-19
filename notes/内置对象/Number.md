@@ -25,7 +25,7 @@ Object.getOwnPropertyNames(Number).sort().forEach(function(val) { console.log(va
 "name" ×
 "parseFloat" √
 "parseInt" √
-"prototype"
+"prototype" √
 ```
 
 ## 1.简介
