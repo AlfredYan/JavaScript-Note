@@ -49,6 +49,13 @@
 - [行为委托](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#9行为委托) 
 - [总结](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/JavaScript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE.md#10总结) 
 
+## [数据类型](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md) 
+
+- [数据类型概述](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#1数据类型概述) 
+- [数据类型的判断](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#2数据类型的判断) 
+- [null与undefined](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#3null与undefined) 
+- [boolean](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md#4boolean) 
+
 ## [内置对象学习](https://github.com/AlfredYan/JavaScript-Note/tree/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1) 
 
 ### [Object](https://github.com/AlfredYan/JavaScript-Note/blob/master/notes/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Object.md) 
