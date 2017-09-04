@@ -132,7 +132,7 @@ Object.getOwnPropertyNames(Array.prototype).sort().forEach(function(val) { conso
 "some" √
 "sort" √
 "splice" √
-"toLocaleString"
+"toLocaleString" √
 "toString" √
 "unshift" √
 ```
@@ -154,7 +154,7 @@ arr.valueOf === Object.prototype.valueOf // true
 arr.valueOf(); // ["a", 1, ["b", "c"], [object Object] {a: "hello"}, function foo() {}]
 ```
 
-##7.arr.push() && arr.pop()
+##7.arr.push() & arr.pop()
 
 **Array.prototype.push(element1, …, elementN)：** 将一个或多个元素添加到数组的末尾，并返回数组的新长度。该方法会改变原数组。
 
