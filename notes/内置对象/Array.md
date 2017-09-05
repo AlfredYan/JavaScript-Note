@@ -431,7 +431,7 @@ Array.prototype.fill.call(arrLike, 2, 1); // {0: 1, 1: 2, 2: 2, 3: 2, 4: 2, leng
 
 ## 13.arr.reverse()
 
-**Array.prototype.reverse()：**将数组中的元素位置颠倒，返回改变后的数组。该方法会改变原数组。
+**Array.prototype.reverse()：** 将数组中的元素位置颠倒，返回改变后的数组。该方法会改变原数组。
 
 ```javascript
 var arr = ["d", "c", "b", "a", 4, 3, 2, 1];
@@ -504,7 +504,7 @@ arr.indexOf(NaN); // -1
 arr.lastIndexOf(NaN); // -1
 ```
 
-## 16.arr.includes
+## 16.arr.includes()
 
 **Array.prototype.includes(searchElement[, fromIndex])：** 判断一个数组是否包含一个指定的值。如果是返回``true`` ，否则返回``false`` 。
 
@@ -779,12 +779,6 @@ var obj = {
 var arr = [1, "foo", date, obj];
 arr.toLocaleString(); // "1,foo,9/4/2017, 11:49:09 AM,[object Object]"
 ```
-
-
-
-
-
-
 
 1. 无参数时，返回一个空数组。
 2. 单个
