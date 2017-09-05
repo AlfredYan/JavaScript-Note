@@ -779,9 +779,3 @@ var obj = {
 var arr = [1, "foo", date, obj];
 arr.toLocaleString(); // "1,foo,9/4/2017, 11:49:09 AM,[object Object]"
 ```
-
-1. 无参数时，返回一个空数组。
-2. 单个
-3. 单个合法正整数参数，返回一个``length属性`` 为该合法正整数的数组，且每个位置都为空值。
-4. 单个非合法正整数的**数值** 参数，返回``RangeError`` 错误。
-5. 单个
