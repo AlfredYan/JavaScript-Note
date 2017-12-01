@@ -352,7 +352,7 @@ newArr[0] === arr3[0] // true
 Array.prototype.concat.call(obj, {b: "b"}); // [{a: "a"}, {b: "b"}]
 ```
 
-**Array.prototype.slice(begin, end)：** 将从begin到end（不包括end）d的部分浅拷贝到一个新的数组，并返回该新数组。原数组不会被改变。
+**Array.prototype.slice(begin, end)：** 将从begin到end（不包括end）的部分浅拷贝到一个新的数组，并返回该新数组。原数组不会被改变。
 
 - begin：可选。从该索引处开始浅拷贝原数组的元素，默认为0。为负值时，表示倒数的第几个元素。
 - end：可选。在该索引处结束浅拷贝原数据组的元素。不包括自身。被省略或大于数组长度时，一直提取到原数组末尾。为负值时，表示倒数的第几个元素。
